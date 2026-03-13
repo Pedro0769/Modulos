@@ -54,8 +54,10 @@ export function initFlipbook(width, height, flipSound, adjustFlipbookHeight, tot
     page: 1
   });
 
+  // Estado inicial del progreso
   updateProgress(1, totalPages);
 
+  // Sonido al pasar página
   $('#flipbook').bind("turning", () => {
     if (flipSound) {
       flipSound.currentTime = 0;
@@ -63,16 +65,28 @@ export function initFlipbook(width, height, flipSound, adjustFlipbookHeight, tot
     }
   });
 
+  // Actualizar progreso y altura dinámica
   $('#flipbook').bind("turned", (event, page) => {
     updateProgress(page, totalPages);
     adjustFlipbookHeight(page);  // 👈 ajusta altura dinámica por página
+      // 🔹 Control de visibilidad de flechas
+    document.getElementById('nav-left').style.display = (page === 1) ? 'none' : 'flex';
+    document.getElementById('nav-right').style.display = (page === totalPages) ? 'none' : 'flex';
   });
 
+  // Enganchar flechas de navegación (se asegura de no duplicar eventos)
   $('#nav-left').off('click').on('click', () => $('#flipbook').turn('previous'));
   $('#nav-right').off('click').on('click', () => $('#flipbook').turn('next'));
 
+  // Configurar barra de progreso interactiva
   setupProgressBar($('#flipbook'), totalPages);
 
+  // Handler de resize para adaptar display y altura
   boundResizeHandler = () => handleResize($('#flipbook'), adjustFlipbookHeight);
   window.addEventListener('resize', boundResizeHandler);
+  
+  // 🔹 Estado inicial de flechas
+  document.getElementById('nav-left').style.display = 'none'; // primera página
+  document.getElementById('nav-right').style.display = (totalPages > 1) ? 'flex' : 'none';
 }
+
