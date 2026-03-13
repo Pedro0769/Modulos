@@ -41,7 +41,8 @@ export function initFlipbook(width, height, flipSound, adjustFlipbookHeight, tot
   const isPortrait = window.innerHeight > window.innerWidth;
   const displayMode = (isMobile || isPortrait) ? 'single' : 'double';
 
-  const containerWidth = document.getElementById('flipbook').clientWidth;
+  //const containerWidth = document.getElementById('flipbook').clientWidth;
+  const containerWidth = Math.min(900, document.getElementById('flipbook').clientWidth);
   const scaleFactor = containerWidth / width;
   const initHeight = Math.round(height * scaleFactor);
 
