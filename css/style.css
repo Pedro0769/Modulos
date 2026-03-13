@@ -31,28 +31,36 @@ main {
 }
 
 /* Flechas de navegación */
+/* Ajuste de flechas de navegación */
 .nav-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 3.5%;              /* tamaño relativo al ancho del flipbook */
+  max-width: 40px;          /* límite máximo */
+  aspect-ratio: 1 / 1;      /* mantiene proporción circular */
   background: rgba(255,255,255,0.9);
   border-radius: 50%;
   border: 1px solid #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  cursor: pointer;
+  z-index: 2000;
 }
 
-#nav-left { left: -60px; }   /* fuera del flipbook, a la izquierda */
-#nav-right { right: -60px; } /* fuera del flipbook, a la derecha */
+#nav-left { left: 1%; }      /* margen relativo */
+#nav-right { right: 1%; }
 
 .nav-arrow svg {
-  width: 20px;
-  height: 20px;
-  fill: #333;
+  width: 60%;               /* proporcional al botón */
+  height: auto;
+}
+
+.nav-arrow svg path {
+  stroke: #333;
+  stroke-width: 2;
+  fill: none;
 }
 
 #flipbook .page {
