@@ -22,6 +22,16 @@ export function resetFlipbook(flipbook, thumbnails) {
     window.removeEventListener('resize', boundResizeHandler);
     boundResizeHandler = null;
   }
+    // 🔹 Reinsertar flechas
+  flipbook.append(`
+    <button id="nav-left" class="nav-arrow" aria-label="Página anterior">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+    </button>
+    <button id="nav-right" class="nav-arrow" aria-label="Página siguiente">
+      <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+    </button>
+  `);
+
 }
 
 //initFlipbook(baseWidth, baseHeight, flipSound, adjustFlipbookHeight, pdf.numPages);
