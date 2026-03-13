@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Modulos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Librerías externas -->
+  <script src="js/jquery-3.7.1.js"></script>
+  <script src="js/turn.min.js"></script>
+</head>
+<body>
+  <main>
+    <!-- Selector de PDF -->
+    <input type="file" id="pdf-input" accept="application/pdf">
+
+    <!-- Flipbook -->
+    <div id="flipbook">
+    </div>
+
+    <!-- Flechas de navegación -->
+    <button id="nav-left" class="nav-arrow" aria-label="Página anterior">
+       <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+    </button>
+    <button id="nav-right" class="nav-arrow" aria-label="Página siguiente">
+       <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+    </button>
+
+    <!-- Barra de progreso (ahora antes de las miniaturas) -->
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+      <div id="progress-tooltip" class="hidden"></div>
+    </div>
+    <div id="progress-text">Página 0 / 0</div>
+
+    <!-- Miniaturas -->
+    <div id="thumbnails"></div>
+  </main>
+
+  <!-- Script principal en modo módulo -->
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
